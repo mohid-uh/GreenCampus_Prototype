@@ -8,3 +8,4 @@ class CarbonTracker:
         "bike": 0.0,
         "walk": 0.0
     }
+
