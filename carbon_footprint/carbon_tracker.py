@@ -5,6 +5,7 @@ class CarbonTracker:
     EMISSIONS_PER_KM = {
         "car": 0.21,    # kg CO2 per km
         "bus": 0.08,
+        "train": 0.03,
         "bike": 0.0,
         "walk": 0.0
     }
