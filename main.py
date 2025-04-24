@@ -38,41 +38,47 @@ def main():
     }
 
     current_user = None
-    # Main menu
-    print("=== GreenCampus Prototype ===")
-    print("1) Select User")
-    print("2) Carbon Footprint Tracker")
-    print("3) View Points")
-    print("0) Exit")
 
-    choice = input("Enter option number: ").strip()
-    
-    if choice == '1':
-        print("Select User:)
-        for key, user in users.items():
-            print(f"{key}: {user.username}")
-        selected = input("Enter user number: ").strip()
-        if selected in users:
-            current_user = users[selected]
-            print(f"You are logged in as {current_user.username}")
+    while True:
+        # Main menu loop
+        print("\n=== GreenCampus Prototype ===")
+        print("1) Select User")
+        print("2) Carbon Footprint Tracker")
+        print("3) View Points")
+        print("0) Exit")
+
+        choice = input("Enter option number: ").strip()
+
+        if choice == '1':
+            print("Select User:")
+            for key, user in users.items():
+                print(f"{key}: {user.username}")
+            selected = input("Enter user number: ").strip()
+            if selected in users:
+                current_user = users[selected]
+                print(f"You are logged in as {current_user.username}.")
+            else:
+                print("Invalid user selection.")
+
+        elif choice == '2':
+            if current_user:
+                carbon_footprint_flow(carbon_tracker, current_user)
+            else:
+                print("Please select a user first.")
+
+        elif choice == '3':
+            if current_user:
+                current_user.view_points()
+            else:
+                print("Please select a user first.")
+
+        elif choice == '0':
+            print("Goodbye!")
+            break
+
         else:
-            print("Invalid user")
-            
-    if choice == '2':
-        if current_user:
-            carbon_footprint_flow(carbon_tracker)
-        else:
-            print("Please select a user first")
-            
-    if choice == '3':
-        if current_user:
-            current_user.view_points()
-        else:
-            print("Please select a user first")
-        
-    else:
-        print("Goodbye!")
-        return
+            print("Invalid choice. Please enter one of the menu numbers.")
+
 
 if __name__ == "__main__":
     main()
