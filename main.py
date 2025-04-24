@@ -1,4 +1,5 @@
 from carbon_footprint.carbon_tracker import CarbonTracker
+from user import User
 
 
 def carbon_footprint_flow(carbon_tracker):
@@ -29,15 +30,46 @@ def carbon_footprint_flow(carbon_tracker):
 def main():
     carbon_tracker = CarbonTracker()
 
+    # example users
+    users = {
+        '1': User('John'),
+        '2': User('Jane'),
+        '3': User('Jack')
+    }
+
+    current_user = None
     # Main menu
     print("=== GreenCampus Prototype ===")
-    print("1) Carbon Footprint Tracker")
+    print("1) Select User")
+    print("2) Carbon Footprint Tracker")
+    print("3) View Points")
     print("0) Exit")
 
     choice = input("Enter option number: ").strip()
-
+    
     if choice == '1':
-        carbon_footprint_flow(carbon_tracker)
+        print("Select User:)
+        for key, user in users.items():
+            print(f"{key}: {user.username}")
+        selected = input("Enter user number: ").strip()
+        if selected in users:
+            current_user = users[selected]
+            print(f"You are logged in as {current_user.username}")
+        else:
+            print("Invalid user")
+            
+    if choice == '2':
+        if current_user:
+            carbon_footprint_flow(carbon_tracker)
+        else:
+            print("Please select a user first")
+            
+    if choice == '3':
+        if current_user:
+            current_user.view_points()
+        else:
+            print("Please select a user first")
+        
     else:
         print("Goodbye!")
         return
