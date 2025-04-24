@@ -30,10 +30,10 @@ def carbon_footprint_flow(carbon_tracker, user):
     if co2_emission == 0:
         points = 10
         print("No emissions! You earn 10 GreenPoints.")
-    elif 0 < co2_emission <= 0.05:
+    elif 0 < co2_emission <= 0.1:
         points = 5
         print("Low emissions! You earn 5 GreenPoints.")
-    elif 0.05 < co2_emission <= 0.1:
+    elif 0.1 < co2_emission <= 0.5:
         points = 3
         print("You earn 3 GreenPoints for moderate emissions.")
     else:
