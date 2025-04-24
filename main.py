@@ -2,7 +2,7 @@ from carbon_footprint.carbon_tracker import CarbonTracker
 from user import User
 
 
-def carbon_footprint_flow(carbon_tracker):
+def carbon_footprint_flow(carbon_tracker, user):
     print("\n=== Carbon Footprint Tracker ===\n")
 
     # Prompt for travel choice
