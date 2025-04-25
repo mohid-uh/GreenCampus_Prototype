@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Black">
-    <option name="sdkName" value="/opt/miniconda3" />
+    <option name="sdkName" value="SW1-Env" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="/opt/miniconda3" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="SW1-Env" project-jdk-type="Python SDK" />
 </project>

@@ -47,6 +47,55 @@ def carbon_footprint_flow(carbon_tracker, user):
     user.view_points()
 
 
+def select_user(users):
+    users = users
+    print("Select User:")
+    for key, user in users.items():
+        print(f"{key}: {user.username}")
+    selected = input("Enter user number: ").strip()
+    if selected in users:
+        current_user = users[selected]
+        print(f"You are logged in as {current_user.username}.")
+        return current_user
+    else:
+        print("Invalid user selection.")
+        return None
+
+
+def get_user_points(user):
+    return user[1]
+
+
+def display_leaderboard(users):
+    users = users
+    user_tuples = []
+    for user in users.values():
+        user_tuples.append((user.username, user.points))
+
+    sorted_users = sorted(user_tuples, key=get_user_points, reverse=True)
+
+    print(f"=== Green Points Leaderboard ===")
+    i = 1
+    for user in sorted_users:
+        suffix = str(i)[-1]
+        second_figure = None
+        if i > 10:
+            second_figure = str(i)[-2]
+            if second_figure != "1":
+                second_figure = None
+
+        if suffix == "1" and not second_figure:
+            place = str(i) + "st"
+        elif suffix == "2" and not second_figure:
+            place = str(i) + "nd"
+        elif suffix == "3" and not second_figure:
+            place = str(i) + "rd"
+        else:
+            place = str(i) + "th"
+
+        print(f"{place} place is {user[0]}: {user[1]} green points")
+        i += 1
+
 def main():
     carbon_tracker = CarbonTracker()
 
@@ -54,7 +103,29 @@ def main():
     users = {
         '1': User('John'),
         '2': User('Jane'),
-        '3': User('Jack')
+        '3': User('Jack'),
+        '4': User('Amy'),
+        '5': User('Adam'),
+        '6': User('Bob'),
+        '7': User('Alex'),
+        '8': User('Lucy'),
+        '9': User('Jake'),
+        '10': User('Paula'),
+        '11': User('Mary'),
+        '12': User('Carl'),
+        '13': User('Jeremy'),
+        '14': User('Maurine'),
+        '15': User('A'),
+        '16': User('B'),
+        '17': User('C'),
+        '18': User('D'),
+        '19': User('E'),
+        '20': User('F'),
+        '21': User('G'),
+        '22': User('H'),
+        '23': User('I'),
+        '24': User('J'),
+        '25': User('K')
     }
 
     current_user = None
@@ -65,32 +136,30 @@ def main():
         print("1) Select User")
         print("2) Carbon Footprint Tracker")
         print("3) View Points")
+        print("4) View Leaderboard")
         print("0) Exit")
 
         choice = input("Enter option number: ").strip()
 
         if choice == '1':
-            print("Select User:")
-            for key, user in users.items():
-                print(f"{key}: {user.username}")
-            selected = input("Enter user number: ").strip()
-            if selected in users:
-                current_user = users[selected]
-                print(f"You are logged in as {current_user.username}.")
-            else:
-                print("Invalid user selection.")
+            current_user = select_user(users)
 
         elif choice == '2':
             if current_user:
                 carbon_footprint_flow(carbon_tracker, current_user)
             else:
                 print("Please select a user first.")
+                current_user = select_user(users)
 
         elif choice == '3':
             if current_user:
                 current_user.view_points()
             else:
                 print("Please select a user first.")
+                current_user = select_user(users)
+
+        elif choice == '4':
+            display_leaderboard(users)
 
         elif choice == '0':
             print("Goodbye!")
