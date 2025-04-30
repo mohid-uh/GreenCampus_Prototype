@@ -23,7 +23,7 @@ class User:
 
 # easy way for developers to see the string data rather than object data
   def __str__(self):
-    return f'Username: {self.username}, Points: {self.username}'
+    return f'Username: {self.username}, Points: {self.points}'
 
 
 
