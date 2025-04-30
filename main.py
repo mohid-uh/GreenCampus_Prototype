@@ -26,7 +26,7 @@ def carbon_footprint_flow(carbon_tracker, user):
         print(f"Error: {e}")
         return
 
-       # Award points based on CO₂ emission
+    # Award points based on CO₂ emission
     if co2_emission == 0:
         points = 10
         print("No emissions! You earn 10 GreenPoints.")
@@ -48,7 +48,6 @@ def carbon_footprint_flow(carbon_tracker, user):
 
 
 def select_user(users):
-    users = users
     print("Select User:")
     for key, user in users.items():
         print(f"{key}: {user.username}")
@@ -101,20 +100,20 @@ def main():
 
     # example users
     users = {
-        '1': User('John'),
-        '2': User('Jane'),
-        '3': User('Jack'),
-        '4': User('Amy'),
-        '5': User('Adam'),
-        '6': User('Bob'),
-        '7': User('Alex'),
-        '8': User('Lucy'),
-        '9': User('Jake'),
-        '10': User('Paula'),
-        '11': User('Mary'),
-        '12': User('Carl'),
-        '13': User('Jeremy'),
-        '14': User('Maurine'),
+        '1': User('John', 20),
+        '2': User('Jane', 25),
+        '3': User('Jack', 45),
+        '4': User('Amy', 150),
+        '5': User('Adam', 63),
+        '6': User('Bob', 81),
+        '7': User('Alex', 5),
+        '8': User('Lucy', 108),
+        '9': User('Jake', 9),
+        '10': User('Paula', 207),
+        '11': User('Mary', 1000),
+        '12': User('Carl', 603),
+        '13': User('Jeremy', 200),
+        '14': User('Maurine', 365),
         '15': User('A'),
         '16': User('B'),
         '17': User('C'),
