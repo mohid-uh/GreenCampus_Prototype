@@ -26,7 +26,7 @@ def carbon_footprint_flow(carbon_tracker, user):
         print(f"Error: {e}")
         return
 
-       # Award points based on CO₂ emission
+    # Award points based on CO₂ emission
     if co2_emission == 0:
         points = 10
         print("No emissions! You earn 10 GreenPoints.")
@@ -48,7 +48,6 @@ def carbon_footprint_flow(carbon_tracker, user):
 
 
 def select_user(users):
-    users = users
     print("Select User:")
     for key, user in users.items():
         print(f"{key}: {user.username}")
