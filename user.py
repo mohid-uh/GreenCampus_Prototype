@@ -2,7 +2,7 @@
 class User:
   def __init__(self, username, points=0):
     self.username = username
-    self.points = 0
+    self.points = points
 
 # allows points to be added to a user's points (e.g. when using a sustainable transport method)
 # user gets notified when they reach a point milestone
