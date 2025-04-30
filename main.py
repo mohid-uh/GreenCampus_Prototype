@@ -108,23 +108,8 @@ def main():
         '6': User('Bob', 81),
         '7': User('Alex', 5),
         '8': User('Lucy', 108),
-        '9': User('Jake', 9),
+        '9': User('Jake', 0),
         '10': User('Paula', 207),
-        '11': User('Mary', 1000),
-        '12': User('Carl', 603),
-        '13': User('Jeremy', 200),
-        '14': User('Maurine', 365),
-        '15': User('A'),
-        '16': User('B'),
-        '17': User('C'),
-        '18': User('D'),
-        '19': User('E'),
-        '20': User('F'),
-        '21': User('G'),
-        '22': User('H'),
-        '23': User('I'),
-        '24': User('J'),
-        '25': User('K')
     }
 
     current_user = None
