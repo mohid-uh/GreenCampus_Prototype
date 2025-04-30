@@ -1,6 +1,6 @@
 # user class for storing points data for prototype
 class User:
-  def __init__(self, username):
+  def __init__(self, username, points=0):
     self.username = username
     self.points = 0
 
