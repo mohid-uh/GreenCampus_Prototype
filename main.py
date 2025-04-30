@@ -1,5 +1,6 @@
 from carbon_footprint.carbon_tracker import CarbonTracker
 from user import User
+from gamification.points_manager import PointsManager
 
 
 def carbon_footprint_flow(carbon_tracker, user):
@@ -40,15 +41,19 @@ def carbon_footprint_flow(carbon_tracker, user):
         points = 0
         print("No GreenPoints for your journey.")
 
+    # publishes an event for PointsManager.
     if points > 0:
-        user.add_points(points)
+        carbon_tracker.notify(
+            event="ECO_TRAVEL_LOG",
+            data={"user": user, "points": points}
+        )
 
     # Show users current points total
     user.view_points()
 
 
 def select_user(users):
-    print("Select User:")
+    print("\nSelect User:")
     for key, user in users.items():
         print(f"{key}: {user.username}")
     selected = input("Enter user number: ").strip()
@@ -73,7 +78,7 @@ def display_leaderboard(users):
 
     sorted_users = sorted(user_tuples, key=get_user_points, reverse=True)
 
-    print(f"=== Green Points Leaderboard ===")
+    print(f"\n=== Green Points Leaderboard ===")
     i = 1
     for user in sorted_users:
         suffix = str(i)[-1]
@@ -97,6 +102,8 @@ def display_leaderboard(users):
 
 def main():
     carbon_tracker = CarbonTracker()
+    points_manager = PointsManager()
+    carbon_tracker.subscribe(points_manager)
 
     # example users
     users = {

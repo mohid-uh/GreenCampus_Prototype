@@ -1,6 +1,9 @@
-class CarbonTracker:
+from utils.design_pattern import Publisher
+
+class CarbonTracker(Publisher):
     """
     Calculates carbon footprint based on travel choices.
+    Then publishes events when points should be awarded.
     """
     EMISSIONS_PER_KM = {
         "car": 0.21,    # kg CO2 per km
@@ -9,6 +12,10 @@ class CarbonTracker:
         "bike": 0.0,
         "walk": 0.0
     }
+
+    # Initialise Publisher
+    def __init__(self):
+        super().__init__()
 
     def calculate_co2(self, transport_type, distance_km):
         """
