@@ -1,131 +1,168 @@
-"""
-fill the dictionary with actual uni buildings and additional key:value pairs if necessary
+class EnergyTracker:
+    def __init__(self):
+        # List to hold subscribers (e.g., PointsManager) for the Observer pattern
+        self.subscribers = []
 
-add more energy information
-(I've just used random numbers, but you could consider building size, opening/closing times etc.
-to calculate a more accurate energy measurement)
+        # Hard coded building data with realistic university buildings
+        self.building_dict = {
+            'building_1': {
+                'name': 'Maths Lecture Hall',
+                'department': 'Watson Building of Mathematics',
+                'energy': 120,  # kW per day
+                'hours_open': 12  # Hours per day
+            },
+            'building_2': {
+                'name': 'Central Library',
+                'department': 'General',
+                'energy': 250,
+                'hours_open': 24
+            },
+            'building_3': {
+                'name': 'The Guild of Students',
+                'department': 'UOB Student Union',
+                'energy': 80,
+                'hours_open': 18
+            },
+            'building_4': {
+                'name': 'Chemistry Lab',
+                'department': 'Chemistry, Molecular Sciences Building',
+                'energy': 200,
+                'hours_open': 10
+            },
+            'building_5': {
+                'name': 'Computer Science Building',
+                'department': 'School of Engineering; Computer Science',
+                'energy': 150,
+                'hours_open': 14
+            },
+            'building_6': {
+                'name': 'Physics Lab',
+                'department': 'School of Physics and Astronomy',
+                'energy': 180,
+                'hours_open': 10
+            },
+            'building_7': {
+                'name': 'Engineering Workshop',
+                'department': 'School of Engineering',
+                'energy': 300,
+                'hours_open': 8
+            },
+            'building_8': {
+                'name': 'Chemical, environmental, biomedical science greenhouses/labs',
+                'department': 'Molecular Sciences Building',
+                'energy': 250,
+                'hours_open': 9
+            },
+            'building_9': {
+                'name': 'Maths Tutorial Rooms',
+                'department': 'Watson Building, School of Mathematics',
+                'energy': 60,
+                'hours_open': 10
+            },
+            'building_10': {
+                'name': 'School of History and Cultures Lecture Theatre 2',
+                'department': 'Arts Building',
+                'energy': 100,
+                'hours_open': 10
+            }
+        }
 
-update rating if/else statements with more accurate conditions
+    def subscribe(self, subscriber):
+        """Add a subscriber (e.g., PointsManager) to receive notifications."""
+        self.subscribers.append(subscriber)
 
-provide better feedback to users
-(maybe it could give specific building recommendations or provide energy saving tips?)
+    def notify(self, event, data):
+        """Notify all subscribers of an event (e.g., points earned)."""
+        for subscriber in self.subscribers:
+            subscriber.update(event, data)
 
-link function back to main.py
+    def get_energy_rating(self, building_key):
+        """Calculate energy rating based on energy usage per hour."""
+        building = self.building_dict[building_key]
+        energy = building['energy']
+        hours_open = building['hours_open']
+        if hours_open == 0:
+            return "UNKNOWN/NA"
+        energy_per_hour = energy / hours_open
+        if energy_per_hour <= 5:
+            return "GREEN"
+        elif energy_per_hour <= 15:
+            return "YELLOW"
+        else:
+            return "RED"
 
-I haven't used OOP here so there are no classes/objects yet
-"""
+    def get_departments(self):
+        """Return a sorted list of unique departments."""
+        departments = set(building['department'] for building in self.building_dict.values())
+        return sorted(list(departments))
 
-#dictionary of buildings, including their department and energy info
+    def select_building(self, user):
+        """Allow user to select a building and provide feedback with points."""
+        print("\n=== Energy Tracker ===")
 
-building_dict = {
-    'building_1' : {
-        'name': 'classrooms',
-        'department': 'maths',
-        'energy': 10
-    },
-    'building_2' : {
-        'name': 'library',
-        'department': 'general',
-        'energy': 80
-    },
-    'building_3' : {
-        'name': 'hall',
-        'department': 'general',
-        'energy': 50
-    },
-    'building_4' : {
-        'name': 'laboratory',
-        'department': 'chemistry',
-        'energy': 170
-    },
-    'building_5' : {
-        'name': 'computer rooms',
-        'department': 'computer science',
-        'energy': 200
-    }
-}
+        # Display departments
+        departments = self.get_departments()
+        print("Available departments:")
+        for i, dept in enumerate(departments, 1):
+            print(f"{i}. {dept}")
 
+        # Get department selection
+        try:
+            dept_choice = int(input("Select a department number: ")) - 1
+            selected_dept = departments[dept_choice]
+        except (ValueError, IndexError):
+            print("Invalid selection. Please enter a valid number.")
+            return
 
-def select_building():
+        # Get buildings in the selected department
+        buildings_in_dept = [key for key, val in self.building_dict.items() if val['department'] == selected_dept]
+        if not buildings_in_dept:
+            print("No buildings found in this department.")
+            return
 
-# function compiles list of departments, removing any duplicates
+        # Display buildings with ratings
+        print(f"\nBuildings in {selected_dept}:")
+        for i, key in enumerate(buildings_in_dept, 1):
+            building = self.building_dict[key]
+            rating = self.get_energy_rating(key)
+            print(f"{i}. {building['name']} ({rating})")
 
-    department_list = []
-    for item in building_dict:
-        department_list.append(building_dict[item]['department'])
+        # Get building selection
+        try:
+            building_choice = int(input("Select a building number: ")) - 1
+            selected_building_key = buildings_in_dept[building_choice]
+            selected_building = self.building_dict[selected_building_key]
+        except (ValueError, IndexError):
+            print("Invalid selection. Please enter a valid number.")
+            return
 
+        # Display building details
+        energy = selected_building['energy']
+        hours_open = selected_building['hours_open']
+        rating = self.get_energy_rating(selected_building_key)
+        print(f"\nYou selected {selected_building['name']}.")
+        print(f"Daily energy usage: {energy} kW")
+        print(f"Hours open: {hours_open}")
+        print(f"Energy rating: {rating}")
 
-    for department in department_list:
-        i = department_list.index(department) + 1
-        while i < len(department_list):
-            if department == department_list[i]:
-                department_list.remove(department_list[i])
-            else:
-                i += 1
-    department_list = sorted(department_list)
+        # Award points based on rating
+        if rating == "colour code: GREEN":
+            points = 5
+            print("You chose an energy-efficient building! You earn 5 GreenPoints.")
+        elif rating == "colour code: YELLOW":
+            points = 2
+            print("You chose a moderately efficient building. You earn 2 GreenPoints.")
+        else:
+            points = 0
+            print("This building has high energy usage. No GreenPoints earned.")
 
-#function presents summarised list of departments, asks user to select one
+        if points > 0:
+            self.notify("ENERGY_EFFICIENT_CHOICE", {"user": user, "points": points})
 
-    print('Here are the departments in the university:')
-    i = 1
-    for item in department_list:
-        print(f'{i}. {item}')
-        i += 1
-    selection = input('Which department do you want to look at?')
-
-#function presents list of buildings from selected department, asks user to select one
-    if selection in department_list:
-        print(f'Here are the buildings from the {selection} department:')
-
-        building_list = []
-        for item in building_dict:
-            if building_dict[item]['department'] == selection:
-                building_list.append(building_dict[item]['name'])
-        building_list = sorted(building_list)
-
-        i = 1
-        for item in building_list:
-            print(f'{i}. {item}')
-            i += 1
-
-        selection2 = input('which building do you want to look at?')
-
-        if selection2 not in building_list:
-            print(f'Sorry, building not recognised. Please try again.')
-            print('......................................................')
-            return select_building()
-
-    else:
-        print(f'sorry, department not recognised. Please try again.')
-        print('...........................................................')
-        return select_building()
-
-#selected building is given energy grade (colour) based on energy usage
-
-    for item in building_dict:
-        if building_dict[item]['name'] == selection2:
-            energy = building_dict[item]['energy']
-            print(f'{selection2} uses up {energy} kW of energy each day.')
-
-    if energy <= 50:
-        print(
-            f'ENERGY RATING: GREEN \n'
-            f'{selection2} is an energy efficient building. \n'
-            f'We recommend using it as much as possible!'
-        )
-    elif energy > 50 and energy <= 150:
-        print(
-            f'ENERGY RATING: YELLOW \n'
-            f'{selection2} is a somewhat energy efficient building. \n'
-            f'Using this building is fine, but we recommend '
-            f'looking for more efficient alternatives, if possible'
-        )
-    else:
-        print(
-            f'ENERGY RATING: RED \n'
-            f'{selection2} is not an energy efficient building. \n'
-            f'We recommend avoiding/limiting time in buildings like this.'
-              )
-
-
-select_building()
+        # Provide feedback and tips
+        if rating == "colour code: GREEN":
+            print("Great choice! Keep using energy-efficient buildings.")
+        elif rating == "colour code: YELLOW":
+            print("Tip: Consider turning off lights and equipment when not in use by students, staff or guests to save energy.")
+        else:
+            print("Tip: Minimise time in high-energy buildings or explore alternatives in the same department.")
