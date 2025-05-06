@@ -1,7 +1,10 @@
-class EnergyTracker:
+from utils.design_pattern import Publisher
+
+class EnergyTracker(Publisher):
+    """Tracks building energy usage, rates buildings as GREEN/YELLOW/RED,
+       and publishes events when a user picks an efficient building."""
     def __init__(self):
-        # List to hold subscribers (e.g., PointsManager) for the Observer pattern
-        self.subscribers = []
+        super().__init__()
 
         # Hard coded building data with realistic university buildings
         self.building_dict = {
@@ -66,15 +69,6 @@ class EnergyTracker:
                 'hours_open': 10
             }
         }
-
-    def subscribe(self, subscriber):
-        """Add a subscriber (e.g., PointsManager) to receive notifications."""
-        self.subscribers.append(subscriber)
-
-    def notify(self, event, data):
-        """Notify all subscribers of an event (e.g., points earned)."""
-        for subscriber in self.subscribers:
-            subscriber.update(event, data)
 
     def get_energy_rating(self, building_key):
         """Calculate energy rating based on energy usage per hour."""
@@ -146,10 +140,10 @@ class EnergyTracker:
         print(f"Energy rating: {rating}")
 
         # Award points based on rating
-        if rating == "colour code: GREEN":
+        if rating == "GREEN":
             points = 5
             print("You chose an energy-efficient building! You earn 5 GreenPoints.")
-        elif rating == "colour code: YELLOW":
+        elif rating == "YELLOW":
             points = 2
             print("You chose a moderately efficient building. You earn 2 GreenPoints.")
         else:
@@ -158,11 +152,12 @@ class EnergyTracker:
 
         if points > 0:
             self.notify("ENERGY_EFFICIENT_CHOICE", {"user": user, "points": points})
+            user.view_points()
 
         # Provide feedback and tips
-        if rating == "colour code: GREEN":
-            print("Great choice! Keep using energy-efficient buildings.")
-        elif rating == "colour code: YELLOW":
-            print("Tip: Consider turning off lights and equipment when not in use by students, staff or guests to save energy.")
+        if rating == "GREEN":
+            print("\nGreat choice! Keep using energy-efficient buildings.")
+        elif rating == "YELLOW":
+            print("\nTip: Consider turning off lights and equipment when not in use to save energy.")
         else:
-            print("Tip: Minimise time in high-energy buildings or explore alternatives in the same department.")
+            print("\nTip: Minimise time in high-energy buildings or explore alternatives.")

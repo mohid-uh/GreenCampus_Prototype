@@ -1,7 +1,7 @@
 from carbon_footprint.carbon_tracker import CarbonTracker
 from user import User
 from gamification.points_manager import PointsManager
-
+from energy_tracker import EnergyTracker
 
 def carbon_footprint_flow(carbon_tracker, user):
     print("\n=== Carbon Footprint Tracker ===\n")
@@ -103,7 +103,10 @@ def display_leaderboard(users):
 def main():
     carbon_tracker = CarbonTracker()
     points_manager = PointsManager()
+    energy_tracker = EnergyTracker()
+
     carbon_tracker.subscribe(points_manager)
+    energy_tracker.subscribe(points_manager)
 
     # example users
     users = {
@@ -127,7 +130,8 @@ def main():
         print("1) Select User")
         print("2) Carbon Footprint Tracker")
         print("3) View Points")
-        print("4) View Leaderboard")
+        print("4) Energy Usage Tracker")
+        print("5) View Leaderboard")
         print("0) Exit")
 
         choice = input("Enter option number: ").strip()
@@ -150,6 +154,12 @@ def main():
                 current_user = select_user(users)
 
         elif choice == '4':
+            if current_user:
+                energy_tracker.select_building(current_user)
+            else:
+                print("Please select a user first.")
+
+        elif choice == '5':
             display_leaderboard(users)
 
         elif choice == '0':
@@ -158,7 +168,6 @@ def main():
 
         else:
             print("Invalid choice. Please enter one of the menu numbers.")
-
 
 if __name__ == "__main__":
     main()
