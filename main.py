@@ -1,7 +1,7 @@
 from carbon_footprint.carbon_tracker import CarbonTracker
-from user import User
+from User.user import User
 from gamification.points_manager import PointsManager
-from energy_tracker import EnergyTracker
+from energy_usage.energy_tracker import EnergyTracker
 
 def carbon_footprint_flow(carbon_tracker, user):
     print("\n=== Carbon Footprint Tracker ===\n")
