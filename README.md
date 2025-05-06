@@ -13,16 +13,14 @@ environmentally-friendly actions. The energy resource tracker...
 2. Instructions
 
 3. Programming Languages, Frameworks & Tools:
-
 - Python
 - PyCharm IDE
 
 4. Summary of implemented functionalities
 
 5. Contribution Percentage & specific work done
-
-Mohid - carbon usage tracker stuff, main.py
-Keren - created user.py file, implemented user selection code into main.py, part of README
-Jonah - user leaderboard code
-Phoebe - energy resource tracker
-Liam - energy resource tracker
+- Mohid - carbon usage tracker stuff, main.py
+- Keren - created user.py file, implemented user selection code into main.py, part of README
+- Jonah - user leaderboard code
+- Phoebe - energy resource tracker
+- Liam - energy resource tracker
