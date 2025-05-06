@@ -7,6 +7,10 @@ class User:
 # allows points to be added to a user's points (e.g. when using a sustainable transport method)
 # user gets notified when they reach a point milestone
   def add_points(self, points):
+    # disallow negative additions (negative test case)
+    if points < 0:
+      raise ValueError("Cannot add negative GreenPoints")
+
     self.points += points
     if self.points == 100:
       print(f'You\'ve reached 100 points! Congratulations!')
