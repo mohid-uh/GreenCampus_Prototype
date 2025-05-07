@@ -8,10 +8,14 @@
     It uses the Publish/Subscribe (Observer) pattern to decouple "event generators" (trackers) from the "PointsManager" subscriber, which awards points.
 
    Key Classes & Relationships:
+   
       Publisher / Subscriber (Observer pattern):
+   
          - CarbonTracker & EnergyTracker inherit from Publisher
          - PointsManager implements Subscriber
+   
       Inheritance: Trackers ← Publisher; PointsManager ← Subscriber
+   
       Association: User passed in event data; Tracker holds config dicts
 
 3. Instructions:
