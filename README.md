@@ -48,7 +48,7 @@
 5. **Contribution:**
    
     - Mohid (2190944) - carbon tracker functionality; main.py; implemented Publish/Subscribe design pattern; README.
-    - Keren (2403314) - created user.py file; implemented user selection code into main.py; video; README
+    - Keren (2403314) - user management; implemented user selection code into main.py; video; README
     - Jonah - user leaderboard code; edited video
     - Phoebe - energy resource tracker
     - Liam - energy resource tracker
