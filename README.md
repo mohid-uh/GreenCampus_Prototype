@@ -36,8 +36,10 @@
 
 6. Contribution:
    
-    - Mohid - carbon tracker functionality; main.py; implemented Publish/Subscribe design pattern; README.
+    - Mohid (2190944) - carbon tracker functionality; main.py; implemented Publish/Subscribe design pattern; README.
     - Keren - created user.py file, implemented user selection code into main.py, part of README
     - Jonah - user leaderboard code
     - Phoebe - energy resource tracker
     - Liam - energy resource tracker
+  
+   Contribution is split even (1/5 each).
