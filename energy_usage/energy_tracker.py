@@ -123,7 +123,7 @@ class EnergyTracker(Publisher):
 
         # Get building selection
         try:
-            building_choice = int(input("Select a building number: ")) - 1
+            building_choice = int(input("\nSelect a building number: ")) - 1
             selected_building_key = buildings_in_dept[building_choice]
             selected_building = self.building_dict[selected_building_key]
         except (ValueError, IndexError):
