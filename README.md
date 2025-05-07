@@ -1,4 +1,4 @@
-1. System description:
+**1. System description:**
 
     **A CLI-based sustainability engagement app**
     
@@ -7,7 +7,7 @@
 
     It uses the Publish/Subscribe (Observer) pattern to decouple "event generators" (trackers) from the "PointsManager" subscriber, which awards points.
 
-   Key Classes & Relationships:
+   **Key Classes & Relationships:**
    
       Publisher / Subscriber (Observer pattern):
    
@@ -18,15 +18,15 @@
    
       Association: User passed in event data; Tracker holds config dicts
 
-3. Instructions:
+**3. Instructions:**
 
      The prototype is ran via a menu in the command line interface, the user should follow the prompts to observe the functionalities.
 
-4. Programming Languages, Frameworks & Tools:
+**4. Programming Languages, Frameworks & Tools:**
     - Python
     - PyCharm IDE
 
-4. Summary of implemented functionalities:
+**4. Summary of implemented functionalities:**
 
    User Management
     – CLI-based user selection and session handling
@@ -45,7 +45,7 @@
     – Ranks all users by points with proper ordinal suffixes
 
 
-6. Contribution:
+**6. Contribution:**
    
     - Mohid (2190944) - carbon tracker functionality; main.py; implemented Publish/Subscribe design pattern; README.
     - Keren - created user.py file, implemented user selection code into main.py, part of README
