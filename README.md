@@ -49,7 +49,7 @@
    
     - Mohid (2190944) - carbon tracker functionality; main.py; implemented Publish/Subscribe design pattern; README.
     - Keren (2403314) - user management; implemented user selection code into main.py; video; README
-    - Jonah - user leaderboard code; edited video
+    - Jonah (2755137) - user leaderboard code; edited video
     - Phoebe (2163033) - energy resource tracker; README
     - Liam (2744705) - energy resource tracker
   
