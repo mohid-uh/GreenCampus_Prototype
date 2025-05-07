@@ -2,7 +2,7 @@
 
     **A CLI-based sustainability engagement app**
     
-    The GreenCampus prototype system is designed to simulate the key features within the proposed GreenCampus app. This system prototypes        the carbon footprint tracker, points and leaderboard system, and the energy resource tracker feature. The carbon footprint tracker           allows the user to input their mode of transport and the distance the user has travelled, and calculates the amount of carbon emmissions     were outputted based on this data. The user gains points for using low-emmision travel methods. These points are stored to the user's        account, and the user can compete with other users using the points leaderboard, to encourage environmentally-friendly actions. The          energy resource tracker... 
+    The GreenCampus prototype system is designed to simulate the key features within the proposed GreenCampus app. This system prototypes        the carbon footprint tracker, points and leaderboard system, and the energy resource tracker feature. The carbon footprint tracker           allows the user to input their mode of transport and the distance the user has travelled, and calculates the amount of carbon emissions     were outputted based on this data. The user gains points for using low-emission travel methods. These points are stored in the user's        account, and the user can compete with other users using the points leaderboard to encourage environmentally friendly actions. The          energy resource tracker... 
 
     It uses the Publish/Subscribe (Observer) pattern to decouple "event generators" (trackers) from the "PointsManager" subscriber, which        awards points.
 
@@ -19,7 +19,7 @@
 
 2. **Instructions:**
 
-     The prototype is ran via a menu in the command line interface, the user should follow the prompts to observe the functionalities.
+     The prototype is run via a menu in the command line interface, the user should follow the prompts to observe the functionalities.
 
 3. **Programming Languages, Frameworks & Tools:**
 
@@ -48,9 +48,9 @@
 5. **Contribution:**
    
     - Mohid (2190944) - carbon tracker functionality; main.py; implemented Publish/Subscribe design pattern; README.
-    - Keren - created user.py file, implemented user selection code into main.py, part of README
-    - Jonah - user leaderboard code
+    - Keren (2403314) - created user.py file; implemented user selection code into main.py; video; README
+    - Jonah - user leaderboard code; edited video
     - Phoebe - energy resource tracker
     - Liam - energy resource tracker
   
-   Contribution is split even (1/5 each).
+   Contribution is split evenly (1/5 each).
