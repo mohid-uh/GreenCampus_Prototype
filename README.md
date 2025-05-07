@@ -11,8 +11,8 @@
    
       Publisher / Subscriber (Observer pattern):
    
-         - CarbonTracker & EnergyTracker inherit from Publisher
-         - PointsManager implements Subscriber
+      - CarbonTracker & EnergyTracker inherit from Publisher
+      - PointsManager implements Subscriber
    
       Inheritance: Trackers ← Publisher; PointsManager ← Subscriber
    
