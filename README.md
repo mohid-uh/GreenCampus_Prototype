@@ -2,7 +2,7 @@
 
     **A CLI-based sustainability engagement app**
     
-    The GreenCampus prototype system is designed to simulate the key features within the proposed GreenCampus app. This system prototypes        the carbon footprint tracker, points and leaderboard system, and the energy resource tracker feature. The carbon footprint tracker           allows the user to input their mode of transport and the distance the user has travelled, and calculates the amount of carbon emissions     were outputted based on this data. The user gains points for using low-emission travel methods. These points are stored in the user's        account, and the user can compete with other users using the points leaderboard to encourage environmentally friendly actions. The          energy resource tracker... 
+    The GreenCampus prototype system is designed to simulate the key features within the proposed GreenCampus app. This system prototypes        the carbon footprint tracker, points and leaderboard system, and the energy resource tracker feature. The carbon footprint tracker           allows the user to input their mode of transport and the distance the user has travelled, and calculates the amount of carbon emissions     produced based on this data. The user gains points for using low-emission travel methods. These points are stored in the user's        account, and the user can compete with other users using the points leaderboard to encourage environmentally friendly actions. The          energy resource tracker... 
 
     It uses the Publish/Subscribe (Observer) pattern to decouple "event generators" (trackers) from the "PointsManager" subscriber, which        awards points.
 
